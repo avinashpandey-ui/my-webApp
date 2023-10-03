@@ -1,0 +1,23 @@
+<div class="form-wrapper">
+  <form [formGroup]="loginDetail">
+    <div class="email-id">
+      <label for="emailId" class="email-label">Enter Your EmailId</label><br />
+      <input id="emailId" class="email-input" formControlName="email" />
+      <div
+        *ngIf="getEmailControl().errors?.['required'] && getEmailControl().touched"
+      >
+        Required Field
+      </div>
+    </div>
+    <div>
+      <label for="password" class="password-label">Enter Password</label><br />
+      <input id="password" class="password-input" formControlName="password" />
+    </div>
+  </form>
+</div>
+<div class="password-error"*ngIf=" showWrongPassswordError ">You entering wrong paswword</div>
+<footer>
+  <div class="login-button">
+    <button (click)="loginUser()">login</button>
+  </div>
+</footer>
