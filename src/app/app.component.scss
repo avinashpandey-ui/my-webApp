@@ -1,47 +1,24 @@
-.wrapper{
-  height:400px;
-  width :500px;
-  border: 2px solid black;
-  margin: auto;
-  background: white;
+:host {
+  height: 100%;
+  width: 100%;
 }
-.container{
-  height: 40%;
-  overflow-y: auto;
-  display: flex;
-}
-.myheader{
-  height: 50%;
-  border-bottom: 2px solid black;
-  padding: 15px;
+.header-bar {
   text-align: center;
-background-color: rgb(98, 131, 202);
+  border: 1px solid black;
+  padding: 5px;
+
+
 }
-.myfooter{
-  height:10%;
-  border-top:2px solid black;
-  padding:15px;
+.form-wrapper{
+  display:flex;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
 }
-.left-aside{
-  float: left;
-  width: 25%;
-  text-align: center;
-}
-.right-aside{
-  float:right;
-  width:25%;
-  text-align: center;
-}
-.main{
-  border-left: 2px solid black;
-  width: 50%;
-  border-right:2px solid black;
-  background-color: aqua;
-}
-.red-button{
-  background-color: red;
+.login-button{
+  text-align: right;
+
 }
 
-.blue-button{
-  background-color: blue;
-}
+
+
