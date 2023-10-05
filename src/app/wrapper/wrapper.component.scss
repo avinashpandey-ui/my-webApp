@@ -1,16 +1,20 @@
-.wrapper-detail{
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.wrapper-detail {
   display: flex;
-  height:80%;
-  &__side-bar{
+  &__side-bar {
     border: 1px solid black;
     width: 20%;
     background-color: aqua;
-
   }
-  &__menu-bar{
-    border:1px solid white;
+
+  &__menu-bar {
+    border: 1px solid white;
     padding: 10%;
     cursor: pointer;
   }
-
 }

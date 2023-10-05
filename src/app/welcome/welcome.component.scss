@@ -1,0 +1,50 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+.header-bar {
+  padding: 1rem;
+}
+
+.welcome-wrapper {
+  overflow-y: auto;
+}
+
+.welcome-content {
+  border: 1px solid black;
+  background-color: cadetblue;
+  padding: 1rem;
+}
+
+.welcome-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-item {
+  border: 1px solid black;
+  padding: 1rem;
+  margin-right: 1rem;
+  background-color: whitesmoke;
+  height: 25rem;
+}
+
+.paragraph-bar {
+  text-align: center;
+  font-size: x-large;
+}
+
+.most-popular {
+  background-color: purple;
+  text-align: center;
+  margin-right: 1rem;
+  margin-top: 1.5rem;
+  height: 1.5rem;
+}
+
+.margin-top-3 {
+  margin-top: 3rem;
+}
