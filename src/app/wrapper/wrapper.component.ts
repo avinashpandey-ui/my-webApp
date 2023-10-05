@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class WrapperComponent {
   constructor(private readonly router: Router) {}
   navigateToPage(path: string) {
-    this.router.navigate([path]);
+    this.router.navigate([`books-adda/${path}`]);
+    // this.router.navigate([`books-adda/[path]`]);
   }
 }

@@ -1,1 +1,24 @@
-<h1>hello</h1>
+<div class="full-height-width welcome-wrapper">
+  <h1 class="header-bar">Books Adda</h1>
+  <div class="welcome-content">
+    <h2>About Us</h2>
+    <p>
+      Here you can purchase your stationary item in low cost .Dont worry about
+      price
+    </p>
+    <button>Learn More</button>
+  </div>
+  <div class="welcome-container">
+    <ng-container *ngFor="let card of welcomeCards">
+      <div [ngClass]="{ 'margin-top-3': card.id !== 'branding' }">
+        <div *ngIf="card.id === 'branding'" class="most-popular">
+          Most Popular
+        </div>
+        <div class="grid-item">
+          <p class="paragraph-bar">{{ card.heading }}</p>
+          <p *ngFor="let feature of card.features">{{ feature }}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
