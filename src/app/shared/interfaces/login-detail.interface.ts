@@ -5,4 +5,5 @@ export interface ILoginUser {
 
 export interface ILoginResponse {
   token: string;
+  role: string;
 }
