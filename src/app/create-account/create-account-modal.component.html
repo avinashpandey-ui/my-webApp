@@ -1,0 +1,88 @@
+<div mat-dialog-title>
+  <p>Sign Up</p>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="createAccountDetail">
+    <div class="first-name-last-name">
+      <mat-form-field>
+        <mat-label>FirstName</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="fName"
+          placeholder="FirstName"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>MiddleName</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="sName"
+          placeholder="SurName"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>LastName</mat-label>
+        <input type="text" matInput formControlName="lName" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Enter your Email</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="email"
+          placeholder="Email address"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>New Password</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="password"
+          placeholder="New Password"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Date of birth</mat-label>
+      <mat-select formControlName="date">
+        <mat-option *ngFor="let date of dates" [value]="date" >{{ date }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Month</mat-label>
+      <mat-select formControlName="month" >
+        <mat-option *ngFor="let month of months" [value]="month.value">{{ month.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <mat-select formControlName="year" >
+        <mat-option *ngFor="let year of years" [value]="year">{{ year }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <div>
+    <mat-radio-group aria-label="Select an option" formControlName="gender">
+      <mat-radio-button value="1">Male</mat-radio-button>
+      <mat-radio-button value="2">Female</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  </form>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="createAccount()">CreateAccount</button>
+    <button mat-button (click)="closeCreateAccountModal()">Close</button>
+  </div>
+</div>

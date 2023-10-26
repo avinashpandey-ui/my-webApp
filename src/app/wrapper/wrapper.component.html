@@ -1,8 +1,8 @@
 <div class="wrapper-detail full-height-width">
   <div class="wrapper-detail__side-bar">
-    <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('welcome')">Welcome</a></div>
-    <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('user')">User</a></div>
-    <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('hospital')">Hospital</a></div>
+    <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('welcome')">Dashboard</a></div>
+    <div *ngIf="userRole === 'HOD'" class="wrapper-detail__menu-bar"><a (click)="navigateToPage('user')">User</a></div>
+    <div *ngIf="userRole === 'HOD'" class="wrapper-detail__menu-bar"><a (click)="navigateToPage('hospital')">Hospital</a></div>
     <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('school')">School</a></div>
     <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('Restaurant')">Restaurant</a></div>
     <div class="wrapper-detail__menu-bar"><a (click)="navigateToPage('bank')">Bank</a></div>

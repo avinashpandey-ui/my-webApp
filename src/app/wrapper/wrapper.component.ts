@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./wrapper.component.scss'],
 })
 export class WrapperComponent {
+  userRole = localStorage.getItem('role');
   constructor(private readonly router: Router) {}
   navigateToPage(path: string) {
     this.router.navigate([`books-adda/${path}`]);

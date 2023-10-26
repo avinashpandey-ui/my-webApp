@@ -8,6 +8,10 @@ import {
 import { ILoginResponse } from '../shared/interfaces/login-detail.interface';
 import { UserApiService } from '../shared/services/user-api.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateAccountModalComponent } from '../create-account/create-account-modal.component';
+import { filter, switchMap } from 'rxjs';
+import { AccountApiservice } from '../shared/services/account-api.service';
 
 @Component({
   selector: 'app-login',
@@ -15,23 +19,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  showWrongPassswordError = false;
+  createAccount = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
 
-  loginDetail = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.email]),
   });
+
   constructor(
-    private readonly userApiService: UserApiService,
+    public dialog: MatDialog,
+    private readonly accountApiService: AccountApiservice,
     private readonly router: Router
   ) {}
 
-  ngOnInit(): void {
-    // this.getEmailControl()
-    //   .valueChanges.pipe(debounceTime(300))
-    //   .subscribe((value) => {
-    //     console.log(value);
-    //   });
+  openCreateAccountModal(): void {
+    const dialogRef = this.dialog.open(CreateAccountModalComponent, {
+      data: {},
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter(Boolean),
+        switchMap((userDetailsPayload) =>
+          this.accountApiService.createUserAccount(userDetailsPayload)
+        )
+      )
+      .subscribe(() => {
+        alert(`Your account Created`);
+      });
   }
 
   loginUser() {
@@ -39,32 +54,20 @@ export class LoginComponent {
       email: this.getEmailControl().value,
       password: this.getPasswordControl().value,
     };
-    this.userApiService
-      .loginUser(userDetails)
-      .subscribe((response: ILoginResponse | null) => {
-        if (response) {
-          this.showWrongPassswordError = false;
-          localStorage.setItem('login_token', response.token);
-          this.router.navigate(['books-adda']);
-        } else {
-          this.showWrongPassswordError = true;
-          // alert('you entering wrong password/email');
-        }
-      });
-    // this.userApiService.loginUser(userDetails).subscribe({
-    //   next: (res: ILoginResponse) => {
-    //     localStorage.setItem('login_token', res.token);
-    //     this.router.navigate(['books-adda']);
-    //   },
-    //   error: () => (this.showWrongPassswordError = true),
-    // });
+    this.accountApiService.login(userDetails).subscribe((response) => {
+      if (response) {
+        localStorage.setItem('access_token', response?.token);
+        localStorage.setItem('role', response?.role);
+        this.router.navigate(['books-adda']);
+      }
+    });
   }
 
   getEmailControl(): AbstractControl {
-    return this.loginDetail.get('email') as AbstractControl;
+    return this.createAccount.get('email') as AbstractControl;
   }
 
   getPasswordControl(): AbstractControl {
-    return this.loginDetail.get('password') as AbstractControl;
+    return this.createAccount.get('password') as AbstractControl;
   }
 }

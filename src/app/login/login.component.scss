@@ -1,3 +1,39 @@
-.password-error {
-  color: red;
+// .password-error {
+//   color: red;
+// }
+:host{
+  height:100%;
+  display: flex;
 }
+.login-button {
+  width: 15rem;
+
+}
+.create-account {
+  width: 15rem;
+}
+.wrapper-page {
+  width:100%;
+  background-color: #c9ccd1;
+  &__content {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+
+  }
+  &__facebook{
+    color:blue;
+    font-size: xxx-large;
+    font-weight: bold;
+  }
+
+}
+.login-page{
+  background-color: white;
+  margin-left: 4rem;
+  padding: 2rem;
+
+}
+
